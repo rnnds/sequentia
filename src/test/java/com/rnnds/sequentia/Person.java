@@ -6,13 +6,13 @@ import com.google.common.base.Objects;
 
 public class Person {
 
-    @SequentialMapping(begin = 0, end = 8)
+    @SequentialMapping(length = 8)
     private String name;
 
-    @SequentialMapping(begin = 9, end = 15)
+    @SequentialMapping(length = 7)
     private Integer age;
 
-    @SequentialMapping(begin = 16, end = 25)
+    @SequentialMapping(length = 10)
     private Long income;
 
     public Person() {

@@ -1,5 +1,7 @@
 package com.rnnds.sequentia;
 
+import com.google.common.base.Strings;
+
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.nio.file.Files.lines;
@@ -35,7 +37,7 @@ public class Extractor {
     private ExtractionMapping toMapping(final Field field) {
         SequentialMapping annotation = field.getAnnotation(SequentialMapping.class);
         if (annotation != null) {
-            return new ExtractionMapping(field.getName(), field.getType(), annotation.begin(), annotation.end());
+            return new ExtractionMapping(field.getName(), field.getType(), annotation.length());
         }
         return null;
     }
@@ -52,10 +54,12 @@ public class Extractor {
     private <T> T build(final Class<T> clazz, final List<ExtractionMapping> mappings, final String line)
             throws Exception {
         T current = clazz.newInstance();
+        int currentIndex = 0;
         for (ExtractionMapping mapping : mappings) {
             Field field = clazz.getDeclaredField(mapping.getField());
             field.setAccessible(true);
-            String value = line.substring(mapping.getBegin(), mapping.getEnd()).trim();
+            String value = line.substring(currentIndex, currentIndex + mapping.getLength()).trim();
+            currentIndex += mapping.getLength();
             field.set(current, convert(value, mapping.getType()));
         }
         return current;
