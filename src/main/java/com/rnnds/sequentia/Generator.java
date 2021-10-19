@@ -23,20 +23,22 @@ public class Generator {
 
         for (Field field : fields) {
             Object value = BeanUtils.getProperty(mappedObject, field.getName());
-            result += processValue(field, value);
+            SequentialMapping annotation = field.getAnnotation(SequentialMapping.class);
+            if(annotation != null){
+                result += processValue(annotation, value);
+            }
         }
         return result;
     }
 
-    private String processValue(Field field, Object value) {
-        SequentialMapping annotation = field.getAnnotation(SequentialMapping.class);
+    private String processValue(SequentialMapping annotation, Object value) {
         int length = annotation.length();
         char padChar = annotation.padCharacter();
 
         if (PadMode.LEFT.equals(annotation.pad())) {
-            return padEnd(value.toString(), length, padChar);
+            return padStart(value.toString(), length, padChar);
         }
-        return padStart(value.toString(), length, padChar);
+        return padEnd(value.toString(), length, padChar);
     }
 
 }

@@ -8,7 +8,7 @@ public @interface SequentialMapping {
 
     int length();
 
-    PadMode pad() default PadMode.LEFT;
+    PadMode pad() default PadMode.RIGHT;
 
     char padCharacter() default ' ';
 

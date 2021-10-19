@@ -3,6 +3,7 @@ package com.rnnds.sequentia;
 import com.google.common.base.Objects;
 
 import static com.google.common.base.Objects.equal;
+import static com.rnnds.sequentia.PadMode.LEFT;
 import static com.rnnds.sequentia.PadMode.RIGHT;
 
 public class Person {
@@ -10,10 +11,10 @@ public class Person {
     @SequentialMapping(length = 8)
     private String name;
 
-    @SequentialMapping(length = 7, pad = RIGHT, padCharacter = '0')
+    @SequentialMapping(length = 7, pad = LEFT, padCharacter = '0')
     private Integer age;
 
-    @SequentialMapping(length = 10, pad = RIGHT, padCharacter = '0')
+    @SequentialMapping(length = 10, pad = LEFT, padCharacter = '0')
     private Long income;
 
     public Person() {
