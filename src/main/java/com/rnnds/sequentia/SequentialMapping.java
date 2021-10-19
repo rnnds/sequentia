@@ -6,8 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SequentialMapping {
 
-    int begin();
+    int length();
 
-    int end();
+    PadMode pad() default PadMode.RIGHT;
+
+    char padCharacter() default ' ';
 
 }

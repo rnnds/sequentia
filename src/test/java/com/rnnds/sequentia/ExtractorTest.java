@@ -1,13 +1,13 @@
 package com.rnnds.sequentia;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ExtractorTest {
 
@@ -19,7 +19,7 @@ public class ExtractorTest {
     public void shouldExtractFromPath() throws Exception {
         Path path = Paths.get("src/test/resources/person-test.txt");
         List<Person> result = extractor.extract(Person.class, path);
-        assertArrayEquals(new Person[] { JOHN, MARY }, result.toArray());
+        assertArrayEquals(new Person[]{JOHN, MARY}, result.toArray());
     }
 
     @Test
