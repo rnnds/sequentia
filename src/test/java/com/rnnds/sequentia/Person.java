@@ -1,18 +1,19 @@
 package com.rnnds.sequentia;
 
-import static com.google.common.base.Objects.equal;
-
 import com.google.common.base.Objects;
+
+import static com.google.common.base.Objects.equal;
+import static com.rnnds.sequentia.PadMode.RIGHT;
 
 public class Person {
 
     @SequentialMapping(length = 8)
     private String name;
 
-    @SequentialMapping(length = 7)
+    @SequentialMapping(length = 7, pad = RIGHT, padCharacter = '0')
     private Integer age;
 
-    @SequentialMapping(length = 10)
+    @SequentialMapping(length = 10, pad = RIGHT, padCharacter = '0')
     private Long income;
 
     public Person() {

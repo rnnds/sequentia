@@ -1,18 +1,16 @@
 package com.rnnds.sequentia;
 
-import com.google.common.base.Strings;
+import java.lang.reflect.Field;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.nio.file.Files.lines;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.beanutils.ConvertUtils.convert;
-
-import java.lang.reflect.Field;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 public class Extractor {
 
